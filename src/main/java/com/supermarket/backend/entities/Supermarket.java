@@ -21,9 +21,8 @@ public class Supermarket extends BaseEntity {
 	private String street;
 	private String houseNumber;
 	private int postalCode;
-	private String town;
 
-	public Supermarket(String name, String email, String password, int capacity, String street, String houseNumber, int postalCode, String town) {
+	public Supermarket(String name, String email, String password, int capacity, String street, String houseNumber, int postalCode) {
 		this.name = name;
 		this.email = email;
 		this.password = password;
@@ -31,7 +30,6 @@ public class Supermarket extends BaseEntity {
 		this.street = street;
 		this.houseNumber = houseNumber;
 		this.postalCode = postalCode;
-		this.town = town;
 	}
 
 	public String getName() {
@@ -64,9 +62,5 @@ public class Supermarket extends BaseEntity {
 
 	public int getPostalCode() {
 		return postalCode;
-	}
-
-	public String getTown() {
-		return town;
 	}
 }
