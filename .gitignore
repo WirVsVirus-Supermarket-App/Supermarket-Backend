@@ -91,6 +91,7 @@ local.properties
 
 # User-specific stuff
 .idea/
+src/main/resources/application.properties
 
 # Gradle and Maven with auto-import
 # When using Gradle or Maven with auto-import, you should exclude module files,
