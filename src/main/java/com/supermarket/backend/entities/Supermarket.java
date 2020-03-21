@@ -22,6 +22,10 @@ public class Supermarket extends BaseEntity {
 	private String houseNumber;
 	private int postalCode;
 
+	public Supermarket() {
+
+	}
+
 	public Supermarket(String name, String email, String password, int capacity, String street, String houseNumber, int postalCode) {
 		this.name = name;
 		this.email = email;
