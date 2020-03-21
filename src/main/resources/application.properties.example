@@ -1,0 +1,8 @@
+server.port=1337
+debug=true
+spring.output.ansi.enabled=always
+
+database.host=1.2.3.4
+database.database-name=dbname
+database.username=dbuser
+database.password=dbpasswd
