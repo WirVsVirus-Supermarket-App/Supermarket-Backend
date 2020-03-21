@@ -6,6 +6,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Map;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -51,4 +57,24 @@ public class UserController {
 		}
 	}
 
+
+	@PostMapping("/login")
+	public ResponseEntity<Map<String, Object>> loginUser(String email, String password) {
+		var hashedPassword = hash(password);
+
+
+		return ResponseEntity.ok(Map.of("success", true));
+	}
+
+	public String hash(String input) {
+		try {
+			MessageDigest digest = MessageDigest.getInstance("SHA-256");
+
+			return new String(digest.digest(input.getBytes(StandardCharsets.UTF_8)));
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+
+			return null;
+		}
+	}
 }
