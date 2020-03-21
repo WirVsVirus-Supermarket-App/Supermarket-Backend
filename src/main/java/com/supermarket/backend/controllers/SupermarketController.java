@@ -5,11 +5,13 @@ import com.supermarket.backend.modules.HashingModule;
 import com.supermarket.backend.services.SupermarketService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -53,5 +55,10 @@ public class SupermarketController {
 		}
 
 		return ResponseEntity.ok(Map.of("success", true, "token", user.get().getToken()));
+	}
+
+	@GetMapping(value ="/nearest", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	public ResponseEntity<List<Supermarket>> nearest(int postalCode) {
+		return ResponseEntity.ok(this.supermarketService.getMultiple(x -> x.getPostalCode() == postalCode).limit(5).toList());
 	}
 }
