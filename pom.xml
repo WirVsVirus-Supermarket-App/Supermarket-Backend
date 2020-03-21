@@ -40,18 +40,20 @@
             <artifactId>java2db</artifactId>
             <version>5.4.0</version>
         </dependency>
+
         <dependency>
-            <groupId>io.swagger</groupId>
-            <artifactId>swagger-core</artifactId>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
             <scope>compile</scope>
-            <version>1.5.21</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>javax.ws.rs</groupId>
-                    <artifactId>jsr311-api</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+            <scope>compile</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -67,70 +69,6 @@
                     <execution>
                         <goals>
                             <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>com.github.kongchen</groupId>
-                <artifactId>swagger-maven-plugin</artifactId>
-                <version>3.1.8</version>
-                <configuration>
-                    <apiSources>
-                        <apiSource>
-                            <springmvc>false</springmvc>
-                            <locations>com.supermarket.backend.controllers</locations>
-                            <schemes>
-                                <scheme>http</scheme>
-                                <scheme>https</scheme>
-                            </schemes>
-                            <host>127.1:1337</host>
-                            <basePath>/</basePath>
-                            <info>
-                                <title>Swagger Maven Plugin Sample</title>
-                                <version>v1</version>
-                                <description>This is a sample for swagger-maven-plugin</description>
-                                <termsOfService>
-                                    http://www.github.com/kongchen/swagger-maven-plugin
-                                </termsOfService>
-                                <contact>
-                                    <email>kongchen@gmail.com</email>
-                                    <name>Kong Chen</name>
-                                    <url>http://kongch.com</url>
-                                </contact>
-                                <license>
-                                    <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
-                                    <name>Apache 2.0</name>
-                                </license>
-                            </info>
-                            <!-- Support classpath or file absolute path here.
-                            1) classpath e.g: "classpath:/markdown.hbs", "classpath:/templates/hello.html"
-                            2) file e.g: "${basedir}/src/main/resources/markdown.hbs",
-                                "${basedir}/src/main/resources/template/hello.html" -->
-                            <templatePath>${basedir}/templates/strapdown.html.hbs</templatePath>
-                            <outputPath>${basedir}/generated/document.html</outputPath>
-                            <attachSwaggerArtifact>true</attachSwaggerArtifact>
-                            <apiModelPropertyAccessExclusions>
-                                <apiModelPropertyAccessExclusion>secret-property</apiModelPropertyAccessExclusion>
-                                <apiModelPropertyAccessExclusion>another-secret-property</apiModelPropertyAccessExclusion>
-                                <apiModelPropertyAccessExclusion>exclude-when-jev-option-not-set</apiModelPropertyAccessExclusion>
-                            </apiModelPropertyAccessExclusions>
-                        </apiSource>
-                    </apiSources>
-                    <enabledObjectMapperFeatures>
-                        <feature>com.fasterxml.jackson.databind.SerializationFeature.WRITE_ENUMS_USING_TO_STRING</feature>
-                        <feature>com.fasterxml.jackson.core.JsonParser$Feature.ALLOW_NUMERIC_LEADING_ZEROS</feature>
-                    </enabledObjectMapperFeatures>
-                    <disabledObjectMapperFeatures>
-                        <feature>com.fasterxml.jackson.databind.SerializationFeature.FAIL_ON_EMPTY_BEANS</feature>
-                    </disabledObjectMapperFeatures>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>generate</goal>
                         </goals>
                     </execution>
                 </executions>
