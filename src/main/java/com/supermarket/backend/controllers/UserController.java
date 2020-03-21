@@ -2,18 +2,13 @@ package com.supermarket.backend.controllers;
 
 import com.supermarket.backend.entities.User;
 import com.supermarket.backend.services.UserService;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.*;
 
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Map;
-
-import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
@@ -45,23 +40,36 @@ public class UserController {
 		return ResponseEntity.ok(Map.of("success", true, "token", fetchedUser.get().getToken()));
 	}
 
-	@PostMapping("/login")
-	public ResponseEntity<Map<String, Object>> loginUser(String email, String password) {
+	@PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Map<String, Object>> loginUser(@RequestBody Map<String, String> params) {
+		if (!params.containsKey("email") || !params.containsKey("password")) {
+			return ResponseEntity.badRequest().body(Map.of("success", false, "message", "Missing parameters."));
+		}
+
+		var email = params.get("email");
+		var password = params.get("password");
 		var hashedPassword = hash(password);
+		var user = this.userService.getFirst(x -> x.getEmail() == email && x.getPassword() == hashedPassword);
+		if (user.isEmpty()) {
+			return ResponseEntity.ok(Map.of("success", false, "message", "User not found."));
+		}
 
-
-		return ResponseEntity.ok(Map.of("success", true));
+		return ResponseEntity.ok(Map.of("success", true, "token", user.get().getToken()));
 	}
 
-    public String hash(String input) {
-        try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+	public String hash(String password) {
+		try {
+			var md = MessageDigest.getInstance("SHA-256");
+			md.update(password.getBytes());
+			byte[] bytes = md.digest();
+			var sb = new StringBuilder();
+			for (byte aByte : bytes) {
+				sb.append(Integer.toString((aByte & 0xff) + 0x100, 16).substring(1));
+			}
 
-            return new String(digest.digest(input.getBytes(StandardCharsets.UTF_8)));
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-
-            return null;
-        }
-    }
+			return sb.toString();
+		} catch (NoSuchAlgorithmException e) {
+			return null;
+		}
+	}
 }
