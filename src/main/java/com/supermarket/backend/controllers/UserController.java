@@ -45,19 +45,6 @@ public class UserController {
 		return ResponseEntity.ok(Map.of("success", true, "token", fetchedUser.get().getToken()));
 	}
 
-	public String hash(String input) {
-		try {
-			MessageDigest digest = MessageDigest.getInstance("SHA-256");
-
-			return new String(digest.digest(input.getBytes(StandardCharsets.UTF_8)));
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-
-			return null;
-		}
-	}
-
-
 	@PostMapping("/login")
 	public ResponseEntity<Map<String, Object>> loginUser(String email, String password) {
 		var hashedPassword = hash(password);
@@ -66,15 +53,15 @@ public class UserController {
 		return ResponseEntity.ok(Map.of("success", true));
 	}
 
-	public String hash(String input) {
-		try {
-			MessageDigest digest = MessageDigest.getInstance("SHA-256");
+    public String hash(String input) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
 
-			return new String(digest.digest(input.getBytes(StandardCharsets.UTF_8)));
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
+            return new String(digest.digest(input.getBytes(StandardCharsets.UTF_8)));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
 
-			return null;
-		}
-	}
+            return null;
+        }
+    }
 }
