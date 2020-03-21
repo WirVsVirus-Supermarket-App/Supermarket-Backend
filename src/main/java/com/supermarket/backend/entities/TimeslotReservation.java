@@ -7,8 +7,10 @@ import com.github.collinalpert.java2db.entities.BaseEntity;
 /**
  * @author Collin Alpert
  */
-@TableName("linkedUserSlot")
-public class LinkedUserSlot extends BaseEntity {
+@TableName("timeslot_reservation")
+public class TimeslotReservation extends BaseEntity {
+
+	private long id;
 
 	private long userId;
 
@@ -20,12 +22,17 @@ public class LinkedUserSlot extends BaseEntity {
 	@ForeignKeyEntity("slotId")
 	private TimeSlot timeSlot;
 
-	public LinkedUserSlot(long userId, long slotId) {
+	public TimeslotReservation(long userId, long slotId) {
 		this.userId = userId;
 		this.slotId = slotId;
 	}
 
-	public LinkedUserSlot() {
+	public TimeslotReservation() {
+	}
+
+	@Override
+	public long getId() {
+		return id;
 	}
 
 	public long getUserId() {
