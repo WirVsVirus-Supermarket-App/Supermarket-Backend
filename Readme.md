@@ -21,7 +21,7 @@ java -jar "swagger-codegen-cli-2.4.12.jar" generate -i http://localhost:1337/v2/
 java -jar "swagger-codegen-cli-2.4.12.jar" generate -i http://localhost:1337/v2/api-docs -o "Supermarket-Backend/Newfolder" -l go
 ```
 
-Copy `Supermarket-Backend/Newfolder/docs/*.md` to `docs/`
+Copy `Supermarket-Backend/Newfolder/docs` to `docs/`
 
 ## Swagger JSON
 ```shell script
