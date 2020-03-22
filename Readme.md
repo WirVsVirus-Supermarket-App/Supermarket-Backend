@@ -6,7 +6,7 @@ Copy `src/main/resources/application.properties.example` to `src/main/resources/
 contents as necessary.
 
 # API Docs
-[docs/Readme.md](docs/Readme.md)
+[docs/README.md](docs/README.md)
 
 # Generate static API documentation
 https://github.com/swagger-api/swagger-codegen#getting-started
