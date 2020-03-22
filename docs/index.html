@@ -696,6 +696,28 @@ margin-bottom: 20px;
   <script>
     // Script section to load models into a JS Var
     var defs = {}
+        defs["LocalTime"] = {
+  "type" : "object",
+  "properties" : {
+    "hour" : {
+      "type" : "integer",
+      "format" : "int32"
+    },
+    "minute" : {
+      "type" : "integer",
+      "format" : "int32"
+    },
+    "nano" : {
+      "type" : "integer",
+      "format" : "int32"
+    },
+    "second" : {
+      "type" : "integer",
+      "format" : "int32"
+    }
+  },
+  "title" : "LocalTime"
+};
         defs["ReducedSupermarket"] = {
   "type" : "object",
   "properties" : {
@@ -723,6 +745,22 @@ margin-bottom: 20px;
   },
   "title" : "ReducedSupermarket"
 };
+        defs["ReducedTimeslot"] = {
+  "type" : "object",
+  "properties" : {
+    "begin" : {
+      "$ref" : "#/definitions/LocalTime"
+    },
+    "end" : {
+      "$ref" : "#/definitions/LocalTime"
+    },
+    "reservations" : {
+      "type" : "integer",
+      "format" : "int32"
+    }
+  },
+  "title" : "ReducedTimeslot"
+};
   </script>
 
   <div class="container-fluid">
@@ -748,6 +786,19 @@ margin-bottom: 20px;
                     </li>
                     <li data-group="SupermarketController" data-name="registerUsingPOST" class="">
                       <a href="#api-SupermarketController-registerUsingPOST">registerUsingPOST</a>
+                    </li>
+                  <li class="nav-header" data-group="TimeSlotController"><a href="#api-TimeSlotController">API Methods - TimeSlotController</a></li>
+                    <li data-group="TimeSlotController" data-name="addUsingPOST" class="">
+                      <a href="#api-TimeSlotController-addUsingPOST">addUsingPOST</a>
+                    </li>
+                    <li data-group="TimeSlotController" data-name="allUsingGET" class="">
+                      <a href="#api-TimeSlotController-allUsingGET">allUsingGET</a>
+                    </li>
+                    <li data-group="TimeSlotController" data-name="deleteUsingDELETE" class="">
+                      <a href="#api-TimeSlotController-deleteUsingDELETE">deleteUsingDELETE</a>
+                    </li>
+                    <li data-group="TimeSlotController" data-name="requestUsingPOST" class="">
+                      <a href="#api-TimeSlotController-requestUsingPOST">requestUsingPOST</a>
                     </li>
                   <li class="nav-header" data-group="UserController"><a href="#api-UserController">API Methods - UserController</a></li>
                     <li data-group="UserController" data-name="loginUsingPOST1" class="">
@@ -1920,6 +1971,1528 @@ except ApiException as e:
                                     </script>
                                   </div>
                                   <input id='responses-registerUsingPOST-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 201 - Created </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 401 - Unauthorized </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 403 - Forbidden </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 404 - Not Found </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                  </section>
+                <section id="api-TimeSlotController">
+                  <h1>TimeSlotController</h1>
+                    <div id="api-TimeSlotController-addUsingPOST">
+                      <article id="api-TimeSlotController-addUsingPOST-0" data-group="User" data-name="addUsingPOST" data-version="0">
+                        <div class="pull-left">
+                          <h1>addUsingPOST</h1>
+                          <p>add</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/timeslot</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-TimeSlotController-addUsingPOST-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-TimeSlotController-addUsingPOST-0-java">Java</a></li>
+                          <li class=""><a href="#examples-TimeSlotController-addUsingPOST-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-TimeSlotController-addUsingPOST-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-TimeSlotController-addUsingPOST-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-TimeSlotController-addUsingPOST-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-TimeSlotController-addUsingPOST-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-TimeSlotController-addUsingPOST-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-TimeSlotController-addUsingPOST-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-TimeSlotController-addUsingPOST-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-TimeSlotController-addUsingPOST-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-TimeSlotController-addUsingPOST-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://localhost:1337/timeslot"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-TimeSlotController-addUsingPOST-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.TimeSlotControllerApi;
+
+import java.io.File;
+import java.util.*;
+
+public class TimeSlotControllerApiExample {
+
+    public static void main(String[] args) {
+        
+        TimeSlotControllerApi apiInstance = new TimeSlotControllerApi();
+        Integer hour = 56; // Integer | 
+        Integer hour2 = 56; // Integer | 
+        Long market = 789; // Long | market
+        Integer minute = 56; // Integer | 
+        Integer minute2 = 56; // Integer | 
+        Integer nano = 56; // Integer | 
+        Integer nano2 = 56; // Integer | 
+        Integer second = 56; // Integer | 
+        Integer second2 = 56; // Integer | 
+        try {
+            Object result = apiInstance.addUsingPOST(hour, hour2, market, minute, minute2, nano, nano2, second, second2);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TimeSlotControllerApi#addUsingPOST");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-TimeSlotController-addUsingPOST-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.TimeSlotControllerApi;
+
+public class TimeSlotControllerApiExample {
+
+    public static void main(String[] args) {
+        TimeSlotControllerApi apiInstance = new TimeSlotControllerApi();
+        Integer hour = 56; // Integer | 
+        Integer hour2 = 56; // Integer | 
+        Long market = 789; // Long | market
+        Integer minute = 56; // Integer | 
+        Integer minute2 = 56; // Integer | 
+        Integer nano = 56; // Integer | 
+        Integer nano2 = 56; // Integer | 
+        Integer second = 56; // Integer | 
+        Integer second2 = 56; // Integer | 
+        try {
+            Object result = apiInstance.addUsingPOST(hour, hour2, market, minute, minute2, nano, nano2, second, second2);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TimeSlotControllerApi#addUsingPOST");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-TimeSlotController-addUsingPOST-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-TimeSlotController-addUsingPOST-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Integer *hour = 56; //  (optional)
+Integer *hour2 = 56; //  (optional)
+Long *market = 789; // market (optional)
+Integer *minute = 56; //  (optional)
+Integer *minute2 = 56; //  (optional)
+Integer *nano = 56; //  (optional)
+Integer *nano2 = 56; //  (optional)
+Integer *second = 56; //  (optional)
+Integer *second2 = 56; //  (optional)
+
+TimeSlotControllerApi *apiInstance = [[TimeSlotControllerApi alloc] init];
+
+// add
+[apiInstance addUsingPOSTWith:hour
+    hour2:hour2
+    market:market
+    minute:minute
+    minute2:minute2
+    nano:nano
+    nano2:nano2
+    second:second
+    second2:second2
+              completionHandler: ^(Object output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-TimeSlotController-addUsingPOST-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var ApiDocumentation = require('api_documentation');
+
+var api = new ApiDocumentation.TimeSlotControllerApi()
+
+var opts = { 
+  'hour': 56, // {Integer} 
+  'hour2': 56, // {Integer} 
+  'market': 789, // {Long} market
+  'minute': 56, // {Integer} 
+  'minute2': 56, // {Integer} 
+  'nano': 56, // {Integer} 
+  'nano2': 56, // {Integer} 
+  'second': 56, // {Integer} 
+  'second2': 56 // {Integer} 
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.addUsingPOST(opts, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-TimeSlotController-addUsingPOST-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-TimeSlotController-addUsingPOST-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class addUsingPOSTExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new TimeSlotControllerApi();
+            var hour = 56;  // Integer |  (optional) 
+            var hour2 = 56;  // Integer |  (optional) 
+            var market = 789;  // Long | market (optional) 
+            var minute = 56;  // Integer |  (optional) 
+            var minute2 = 56;  // Integer |  (optional) 
+            var nano = 56;  // Integer |  (optional) 
+            var nano2 = 56;  // Integer |  (optional) 
+            var second = 56;  // Integer |  (optional) 
+            var second2 = 56;  // Integer |  (optional) 
+
+            try
+            {
+                // add
+                Object result = apiInstance.addUsingPOST(hour, hour2, market, minute, minute2, nano, nano2, second, second2);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TimeSlotControllerApi.addUsingPOST: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-TimeSlotController-addUsingPOST-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api\TimeSlotControllerApi();
+$hour = 56; // Integer | 
+$hour2 = 56; // Integer | 
+$market = 789; // Long | market
+$minute = 56; // Integer | 
+$minute2 = 56; // Integer | 
+$nano = 56; // Integer | 
+$nano2 = 56; // Integer | 
+$second = 56; // Integer | 
+$second2 = 56; // Integer | 
+
+try {
+    $result = $api_instance->addUsingPOST($hour, $hour2, $market, $minute, $minute2, $nano, $nano2, $second, $second2);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TimeSlotControllerApi->addUsingPOST: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-TimeSlotController-addUsingPOST-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::TimeSlotControllerApi;
+
+my $api_instance = WWW::SwaggerClient::TimeSlotControllerApi->new();
+my $hour = 56; # Integer | 
+my $hour2 = 56; # Integer | 
+my $market = 789; # Long | market
+my $minute = 56; # Integer | 
+my $minute2 = 56; # Integer | 
+my $nano = 56; # Integer | 
+my $nano2 = 56; # Integer | 
+my $second = 56; # Integer | 
+my $second2 = 56; # Integer | 
+
+eval { 
+    my $result = $api_instance->addUsingPOST(hour => $hour, hour2 => $hour2, market => $market, minute => $minute, minute2 => $minute2, nano => $nano, nano2 => $nano2, second => $second, second2 => $second2);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling TimeSlotControllerApi->addUsingPOST: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-TimeSlotController-addUsingPOST-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.TimeSlotControllerApi()
+hour = 56 # Integer |  (optional)
+hour2 = 56 # Integer |  (optional)
+market = 789 # Long | market (optional)
+minute = 56 # Integer |  (optional)
+minute2 = 56 # Integer |  (optional)
+nano = 56 # Integer |  (optional)
+nano2 = 56 # Integer |  (optional)
+second = 56 # Integer |  (optional)
+second2 = 56 # Integer |  (optional)
+
+try: 
+    # add
+    api_response = api_instance.add_using_post(hour=hour, hour2=hour2, market=market, minute=minute, minute2=minute2, nano=nano, nano2=nano2, second=second, second2=second2)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TimeSlotControllerApi->addUsingPOST: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+                            <div class="methodsubtabletitle">Form parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                  <tr><td style="width:150px;">hour</td>
+<td>
+
+
+    <div id="d2e199_addUsingPOST_hour">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+                    <span class="format">
+                        (int32)
+                    </span>
+
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                  <tr><td style="width:150px;">hour</td>
+<td>
+
+
+    <div id="d2e199_addUsingPOST_hour2">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+                    <span class="format">
+                        (int32)
+                    </span>
+
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                  <tr><td style="width:150px;">market</td>
+<td>
+
+
+    <div id="d2e199_addUsingPOST_market">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        market
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                  <tr><td style="width:150px;">minute</td>
+<td>
+
+
+    <div id="d2e199_addUsingPOST_minute">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+                    <span class="format">
+                        (int32)
+                    </span>
+
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                  <tr><td style="width:150px;">minute</td>
+<td>
+
+
+    <div id="d2e199_addUsingPOST_minute2">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+                    <span class="format">
+                        (int32)
+                    </span>
+
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                  <tr><td style="width:150px;">nano</td>
+<td>
+
+
+    <div id="d2e199_addUsingPOST_nano">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+                    <span class="format">
+                        (int32)
+                    </span>
+
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                  <tr><td style="width:150px;">nano</td>
+<td>
+
+
+    <div id="d2e199_addUsingPOST_nano2">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+                    <span class="format">
+                        (int32)
+                    </span>
+
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                  <tr><td style="width:150px;">second</td>
+<td>
+
+
+    <div id="d2e199_addUsingPOST_second">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+                    <span class="format">
+                        (int32)
+                    </span>
+
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                  <tr><td style="width:150px;">second</td>
+<td>
+
+
+    <div id="d2e199_addUsingPOST_second2">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+                    <span class="format">
+                        (int32)
+                    </span>
+
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - OK </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-addUsingPOST-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-addUsingPOST-200-schema">
+                                  <div id='responses-addUsingPOST-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "OK",
+  "schema" : {
+    "type" : "object"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = defs;
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-addUsingPOST-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-addUsingPOST-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-addUsingPOST-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 201 - Created </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 401 - Unauthorized </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 403 - Forbidden </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 404 - Not Found </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-TimeSlotController-allUsingGET">
+                      <article id="api-TimeSlotController-allUsingGET-0" data-group="User" data-name="allUsingGET" data-version="0">
+                        <div class="pull-left">
+                          <h1>allUsingGET</h1>
+                          <p>all</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/timeslot</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-TimeSlotController-allUsingGET-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-TimeSlotController-allUsingGET-0-java">Java</a></li>
+                          <li class=""><a href="#examples-TimeSlotController-allUsingGET-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-TimeSlotController-allUsingGET-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-TimeSlotController-allUsingGET-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-TimeSlotController-allUsingGET-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-TimeSlotController-allUsingGET-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-TimeSlotController-allUsingGET-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-TimeSlotController-allUsingGET-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-TimeSlotController-allUsingGET-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-TimeSlotController-allUsingGET-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-TimeSlotController-allUsingGET-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://localhost:1337/timeslot?market="</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-TimeSlotController-allUsingGET-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.TimeSlotControllerApi;
+
+import java.io.File;
+import java.util.*;
+
+public class TimeSlotControllerApiExample {
+
+    public static void main(String[] args) {
+        
+        TimeSlotControllerApi apiInstance = new TimeSlotControllerApi();
+        Long market = 789; // Long | market
+        try {
+            array[ReducedTimeslot] result = apiInstance.allUsingGET(market);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TimeSlotControllerApi#allUsingGET");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-TimeSlotController-allUsingGET-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.TimeSlotControllerApi;
+
+public class TimeSlotControllerApiExample {
+
+    public static void main(String[] args) {
+        TimeSlotControllerApi apiInstance = new TimeSlotControllerApi();
+        Long market = 789; // Long | market
+        try {
+            array[ReducedTimeslot] result = apiInstance.allUsingGET(market);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TimeSlotControllerApi#allUsingGET");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-TimeSlotController-allUsingGET-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-TimeSlotController-allUsingGET-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Long *market = 789; // market (optional)
+
+TimeSlotControllerApi *apiInstance = [[TimeSlotControllerApi alloc] init];
+
+// all
+[apiInstance allUsingGETWith:market
+              completionHandler: ^(array[ReducedTimeslot] output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-TimeSlotController-allUsingGET-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var ApiDocumentation = require('api_documentation');
+
+var api = new ApiDocumentation.TimeSlotControllerApi()
+
+var opts = { 
+  'market': 789 // {Long} market
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.allUsingGET(opts, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-TimeSlotController-allUsingGET-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-TimeSlotController-allUsingGET-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class allUsingGETExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new TimeSlotControllerApi();
+            var market = 789;  // Long | market (optional) 
+
+            try
+            {
+                // all
+                array[ReducedTimeslot] result = apiInstance.allUsingGET(market);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TimeSlotControllerApi.allUsingGET: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-TimeSlotController-allUsingGET-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api\TimeSlotControllerApi();
+$market = 789; // Long | market
+
+try {
+    $result = $api_instance->allUsingGET($market);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TimeSlotControllerApi->allUsingGET: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-TimeSlotController-allUsingGET-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::TimeSlotControllerApi;
+
+my $api_instance = WWW::SwaggerClient::TimeSlotControllerApi->new();
+my $market = 789; # Long | market
+
+eval { 
+    my $result = $api_instance->allUsingGET(market => $market);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling TimeSlotControllerApi->allUsingGET: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-TimeSlotController-allUsingGET-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.TimeSlotControllerApi()
+market = 789 # Long | market (optional)
+
+try: 
+    # all
+    api_response = api_instance.all_using_get(market=market)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TimeSlotControllerApi->allUsingGET: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">market</td>
+<td>
+
+
+    <div id="d2e199_allUsingGET_market">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        market
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - OK </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-allUsingGET-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-allUsingGET-200-schema">
+                                  <div id='responses-allUsingGET-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "OK",
+  "schema" : {
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/ReducedTimeslot"
+    }
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = defs;
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-allUsingGET-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-allUsingGET-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-allUsingGET-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 401 - Unauthorized </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 403 - Forbidden </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 404 - Not Found </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-TimeSlotController-deleteUsingDELETE">
+                      <article id="api-TimeSlotController-deleteUsingDELETE-0" data-group="User" data-name="deleteUsingDELETE" data-version="0">
+                        <div class="pull-left">
+                          <h1>deleteUsingDELETE</h1>
+                          <p>delete</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/timeslot</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-TimeSlotController-deleteUsingDELETE-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-TimeSlotController-deleteUsingDELETE-0-java">Java</a></li>
+                          <li class=""><a href="#examples-TimeSlotController-deleteUsingDELETE-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-TimeSlotController-deleteUsingDELETE-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-TimeSlotController-deleteUsingDELETE-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-TimeSlotController-deleteUsingDELETE-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-TimeSlotController-deleteUsingDELETE-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-TimeSlotController-deleteUsingDELETE-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-TimeSlotController-deleteUsingDELETE-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-TimeSlotController-deleteUsingDELETE-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-TimeSlotController-deleteUsingDELETE-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-TimeSlotController-deleteUsingDELETE-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE "https://localhost:1337/timeslot?id="</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-TimeSlotController-deleteUsingDELETE-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.TimeSlotControllerApi;
+
+import java.io.File;
+import java.util.*;
+
+public class TimeSlotControllerApiExample {
+
+    public static void main(String[] args) {
+        
+        TimeSlotControllerApi apiInstance = new TimeSlotControllerApi();
+        Long id = 789; // Long | id
+        try {
+            Object result = apiInstance.deleteUsingDELETE(id);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TimeSlotControllerApi#deleteUsingDELETE");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-TimeSlotController-deleteUsingDELETE-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.TimeSlotControllerApi;
+
+public class TimeSlotControllerApiExample {
+
+    public static void main(String[] args) {
+        TimeSlotControllerApi apiInstance = new TimeSlotControllerApi();
+        Long id = 789; // Long | id
+        try {
+            Object result = apiInstance.deleteUsingDELETE(id);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TimeSlotControllerApi#deleteUsingDELETE");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-TimeSlotController-deleteUsingDELETE-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-TimeSlotController-deleteUsingDELETE-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Long *id = 789; // id (optional)
+
+TimeSlotControllerApi *apiInstance = [[TimeSlotControllerApi alloc] init];
+
+// delete
+[apiInstance deleteUsingDELETEWith:id
+              completionHandler: ^(Object output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-TimeSlotController-deleteUsingDELETE-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var ApiDocumentation = require('api_documentation');
+
+var api = new ApiDocumentation.TimeSlotControllerApi()
+
+var opts = { 
+  'id': 789 // {Long} id
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.deleteUsingDELETE(opts, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-TimeSlotController-deleteUsingDELETE-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-TimeSlotController-deleteUsingDELETE-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class deleteUsingDELETEExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new TimeSlotControllerApi();
+            var id = 789;  // Long | id (optional) 
+
+            try
+            {
+                // delete
+                Object result = apiInstance.deleteUsingDELETE(id);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TimeSlotControllerApi.deleteUsingDELETE: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-TimeSlotController-deleteUsingDELETE-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api\TimeSlotControllerApi();
+$id = 789; // Long | id
+
+try {
+    $result = $api_instance->deleteUsingDELETE($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TimeSlotControllerApi->deleteUsingDELETE: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-TimeSlotController-deleteUsingDELETE-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::TimeSlotControllerApi;
+
+my $api_instance = WWW::SwaggerClient::TimeSlotControllerApi->new();
+my $id = 789; # Long | id
+
+eval { 
+    my $result = $api_instance->deleteUsingDELETE(id => $id);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling TimeSlotControllerApi->deleteUsingDELETE: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-TimeSlotController-deleteUsingDELETE-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.TimeSlotControllerApi()
+id = 789 # Long | id (optional)
+
+try: 
+    # delete
+    api_response = api_instance.delete_using_delete(id=id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TimeSlotControllerApi->deleteUsingDELETE: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">id</td>
+<td>
+
+
+    <div id="d2e199_deleteUsingDELETE_id">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        id
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - OK </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-deleteUsingDELETE-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-deleteUsingDELETE-200-schema">
+                                  <div id='responses-deleteUsingDELETE-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "OK",
+  "schema" : {
+    "type" : "object"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = defs;
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-deleteUsingDELETE-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-deleteUsingDELETE-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-deleteUsingDELETE-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 204 - No Content </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 401 - Unauthorized </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 403 - Forbidden </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-TimeSlotController-requestUsingPOST">
+                      <article id="api-TimeSlotController-requestUsingPOST-0" data-group="User" data-name="requestUsingPOST" data-version="0">
+                        <div class="pull-left">
+                          <h1>requestUsingPOST</h1>
+                          <p>request</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/timeslot/request</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-TimeSlotController-requestUsingPOST-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-TimeSlotController-requestUsingPOST-0-java">Java</a></li>
+                          <li class=""><a href="#examples-TimeSlotController-requestUsingPOST-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-TimeSlotController-requestUsingPOST-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-TimeSlotController-requestUsingPOST-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-TimeSlotController-requestUsingPOST-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-TimeSlotController-requestUsingPOST-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-TimeSlotController-requestUsingPOST-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-TimeSlotController-requestUsingPOST-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-TimeSlotController-requestUsingPOST-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-TimeSlotController-requestUsingPOST-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-TimeSlotController-requestUsingPOST-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://localhost:1337/timeslot/request"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-TimeSlotController-requestUsingPOST-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.TimeSlotControllerApi;
+
+import java.io.File;
+import java.util.*;
+
+public class TimeSlotControllerApiExample {
+
+    public static void main(String[] args) {
+        
+        TimeSlotControllerApi apiInstance = new TimeSlotControllerApi();
+        Long slot = 789; // Long | slot
+        try {
+            Object result = apiInstance.requestUsingPOST(slot);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TimeSlotControllerApi#requestUsingPOST");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-TimeSlotController-requestUsingPOST-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.TimeSlotControllerApi;
+
+public class TimeSlotControllerApiExample {
+
+    public static void main(String[] args) {
+        TimeSlotControllerApi apiInstance = new TimeSlotControllerApi();
+        Long slot = 789; // Long | slot
+        try {
+            Object result = apiInstance.requestUsingPOST(slot);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TimeSlotControllerApi#requestUsingPOST");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-TimeSlotController-requestUsingPOST-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-TimeSlotController-requestUsingPOST-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Long *slot = 789; // slot (optional)
+
+TimeSlotControllerApi *apiInstance = [[TimeSlotControllerApi alloc] init];
+
+// request
+[apiInstance requestUsingPOSTWith:slot
+              completionHandler: ^(Object output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-TimeSlotController-requestUsingPOST-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var ApiDocumentation = require('api_documentation');
+
+var api = new ApiDocumentation.TimeSlotControllerApi()
+
+var opts = { 
+  'slot': 789 // {Long} slot
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.requestUsingPOST(opts, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-TimeSlotController-requestUsingPOST-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-TimeSlotController-requestUsingPOST-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class requestUsingPOSTExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new TimeSlotControllerApi();
+            var slot = 789;  // Long | slot (optional) 
+
+            try
+            {
+                // request
+                Object result = apiInstance.requestUsingPOST(slot);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TimeSlotControllerApi.requestUsingPOST: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-TimeSlotController-requestUsingPOST-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api\TimeSlotControllerApi();
+$slot = 789; // Long | slot
+
+try {
+    $result = $api_instance->requestUsingPOST($slot);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TimeSlotControllerApi->requestUsingPOST: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-TimeSlotController-requestUsingPOST-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::TimeSlotControllerApi;
+
+my $api_instance = WWW::SwaggerClient::TimeSlotControllerApi->new();
+my $slot = 789; # Long | slot
+
+eval { 
+    my $result = $api_instance->requestUsingPOST(slot => $slot);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling TimeSlotControllerApi->requestUsingPOST: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-TimeSlotController-requestUsingPOST-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.TimeSlotControllerApi()
+slot = 789 # Long | slot (optional)
+
+try: 
+    # request
+    api_response = api_instance.request_using_post(slot=slot)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TimeSlotControllerApi->requestUsingPOST: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+                            <div class="methodsubtabletitle">Form parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                  <tr><td style="width:150px;">slot</td>
+<td>
+
+
+    <div id="d2e199_requestUsingPOST_slot">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        slot
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - OK </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-requestUsingPOST-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-requestUsingPOST-200-schema">
+                                  <div id='responses-requestUsingPOST-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "OK",
+  "schema" : {
+    "type" : "object"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = defs;
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-requestUsingPOST-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-requestUsingPOST-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-requestUsingPOST-200-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 

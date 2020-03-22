@@ -24,13 +24,19 @@ Class | Method | HTTP request | Description
 *SupermarketControllerApi* | [**LoginUsingPOST**](docs/SupermarketControllerApi.md#loginusingpost) | **Post** /supermarket/login | login
 *SupermarketControllerApi* | [**NearestUsingGET**](docs/SupermarketControllerApi.md#nearestusingget) | **Get** /supermarket/nearest | nearest
 *SupermarketControllerApi* | [**RegisterUsingPOST**](docs/SupermarketControllerApi.md#registerusingpost) | **Post** /supermarket/register | register
+*TimeSlotControllerApi* | [**AddUsingPOST**](docs/TimeSlotControllerApi.md#addusingpost) | **Post** /timeslot | add
+*TimeSlotControllerApi* | [**AllUsingGET**](docs/TimeSlotControllerApi.md#allusingget) | **Get** /timeslot | all
+*TimeSlotControllerApi* | [**DeleteUsingDELETE**](docs/TimeSlotControllerApi.md#deleteusingdelete) | **Delete** /timeslot | delete
+*TimeSlotControllerApi* | [**RequestUsingPOST**](docs/TimeSlotControllerApi.md#requestusingpost) | **Post** /timeslot/request | request
 *UserControllerApi* | [**LoginUsingPOST1**](docs/UserControllerApi.md#loginusingpost1) | **Post** /user/login | login
 *UserControllerApi* | [**RegisterUsingPOST1**](docs/UserControllerApi.md#registerusingpost1) | **Post** /user/register | register
 
 
 ## Documentation For Models
 
+ - [LocalTime](docs/LocalTime.md)
  - [ReducedSupermarket](docs/ReducedSupermarket.md)
+ - [ReducedTimeslot](docs/ReducedTimeslot.md)
 
 
 ## Documentation For Authorization
